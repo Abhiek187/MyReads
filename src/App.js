@@ -10,10 +10,15 @@ class BooksApp extends Component {
   }
 
   render() {
+    /*BooksAPI.getAll().then((res) => {
+      console.log(res)
+      BooksAPI.update(res[0], 'read').then((res2) => {console.log(res2)})
+    })
+    BooksAPI.search('Art').then((res) => {console.log(res)})*/
     return (
       <div className="app">
-        <Route exact path="/" render={() => (<Bookshelf/>)}/>
-        <Route path="/search" render={() => (<Search/>)}/>
+        <Route exact path="/" component={Bookshelf}/>
+        <Route path="/search" component={Search}/>
       </div>
     )
   }
