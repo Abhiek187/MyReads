@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
-import './App.css'
 
 class Search extends Component {
   state = {
@@ -17,6 +16,8 @@ class Search extends Component {
   }
 
 	render() {
+    const { showingBooks } = this.state
+
 		return (
 			<div className="search-books">
         <div className="search-books-bar">
@@ -27,8 +28,8 @@ class Search extends Component {
           		You can find these search terms here:
           		https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
 
-          		However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-          		you don't find a specific author or title. Every search is limited by search terms.
+          		However, remember that the BooksAPI.search method DOES search by title or author. So, don't
+              worry if you don't find a specific author or title. Every search is limited by search terms.
         		*/}
           	<input type="text" placeholder="Search by title or author"
               onChange={event => this.searchBooks(event.target.value)}
@@ -38,7 +39,7 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.showingBooks && !this.state.showingBooks.error && this.state.showingBooks.map(book => (
+            {showingBooks && !showingBooks.error && showingBooks.map(book => (
               <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
@@ -46,7 +47,7 @@ class Search extends Component {
                       backgroundImage: `url(${book.imageLinks ? book.imageLinks.thumbnail : ''})` }}>
                     </div>
                     <div className="book-shelf-changer">
-                      <select>
+                      <select defaultValue="none">
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
