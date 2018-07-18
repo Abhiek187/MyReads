@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import React, {Component} from 'react'
+import {Route} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Search from './Search'
@@ -12,14 +12,14 @@ class BooksApp extends Component {
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
-      this.setState({ books })
+      this.setState({books})
     })
   }
 
   changeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       BooksAPI.getAll().then(books => {
-        this.setState({ books })
+        this.setState({books})
       })
     })
   }

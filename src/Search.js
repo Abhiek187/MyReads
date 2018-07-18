@@ -1,23 +1,29 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 
 class Search extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    onChangeShelf: PropTypes.func.isRequired
+  }
+
   state = {
     showingBooks: []
   }
 
   searchBooks = query => {
     BooksAPI.search(query).then(books => {
-      this.setState({ showingBooks: books })
+      this.setState({showingBooks: books})
     }).catch(
-      this.setState({ showingBooks: [] })
+      this.setState({showingBooks: []})
     )
   }
 
 	render() {
-    const { books, onChangeShelf } = this.props
-    const { showingBooks } = this.state
+    const {books, onChangeShelf} = this.props
+    const {showingBooks} = this.state
 
 		return (
 			<div className="search-books">
@@ -44,8 +50,8 @@ class Search extends Component {
               <li key={book.id}>
                 <div className="book">
                   <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193,
-                      backgroundImage: `url(${book.imageLinks ? book.imageLinks.thumbnail : ''})` }}>
+                    <div className="book-cover" style={{width: 128, height: 193,
+                      backgroundImage: `url(${book.imageLinks ? book.imageLinks.thumbnail : ''})`}}>
                     </div>
                     <div className="book-shelf-changer">
                       <select defaultValue={books.filter(b => b.id === book.id).length > 0 ?
@@ -60,7 +66,9 @@ class Search extends Component {
                     </div>
                   </div>
                   <div className="book-title">{book.title}</div>
-                  <div className="book-authors">{book.authors || ''}</div>
+                  <div className="book-authors" style={{whiteSpace: 'pre'}}>
+                    {book.authors ? book.authors.join('\r\n') : 'No Author'}
+                  </div>
                 </div>
               </li>
             ))}
