@@ -16,6 +16,7 @@ class Search extends Component {
   }
 
 	render() {
+    const { books, onChangeShelf } = this.props
     const { showingBooks } = this.state
 
 		return (
@@ -47,7 +48,9 @@ class Search extends Component {
                       backgroundImage: `url(${book.imageLinks ? book.imageLinks.thumbnail : ''})` }}>
                     </div>
                     <div className="book-shelf-changer">
-                      <select defaultValue="none">
+                      <select defaultValue={books.filter(b => b.id === book.id).length > 0 ?
+                        books.filter(b => b.id === book.id)[0].shelf : "none"}
+                        onChange={event => onChangeShelf(book, event.target.value)}>
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
