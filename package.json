@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "eslint": "^5.16.0",
     "handlebars": "^4.7.3",
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.13",
