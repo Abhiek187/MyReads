@@ -2,7 +2,7 @@
 
 This is the final assessment project for Udacity's React Fundamentals course. It is a bookshelf app created in React that allows you to select and categorize books you have read, are currently reading, or want to read.
 
-![MyReads search screen](public/'My Reads.PNG')
+![MyReads search screen](public/My%20Reads.PNG)
 
 ## Running The Project
 
