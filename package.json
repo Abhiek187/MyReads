@@ -5,6 +5,7 @@
     "elliptic": ">=6.5.4",
     "handlebars": ">=4.5.3",
     "http-proxy": ">=1.18.1",
+    "is-svg": ">=4.2.2",
     "js-yaml": "^3.14.0",
     "kind-of": ">=6.0.3",
     "lodash": "^4.17.19",
